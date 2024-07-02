@@ -3,20 +3,23 @@
   "version": "1.0.0",
   "description": "read screenshots from delivery shifts",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "api:dev": "pm2 start ./server/api.js --watch ./server",
-    "api": "pm2 start ./server/api.js"
+    "api:dev": "pm2 start ./server/index.js --watch ./server --name ocr-api",
+    "api": "pm2 start ./server/index.js --name ocr-api"
   },
   "author": "David Radick",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "pm2": "^5.4.1",
-    "react": "^18.3.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
