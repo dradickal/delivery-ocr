@@ -4,8 +4,22 @@
   "description": "read screenshots from delivery shifts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "api:dev": "pm2 start ./server/api.js --watch ./server",
+    "api": "pm2 start ./server/api.js"
   },
   "author": "David Radick",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pm2": "^5.4.1",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.3.2"
+  }
 }
