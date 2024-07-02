@@ -1,0 +1,37 @@
+[INFO] OCR'ing input image...
+[INFO] 0.7318: 3.07
+[INFO] 0.3641: Q0
+[INFO] 0.9997: LTE
+[INFO] 0.9990: 1%
+[INFO] 0.9964: Earnings
+[INFO] 1.0000: Day
+[INFO] 1.0000: Week
+[INFO] 0.8454: Jun 17,2024
+[INFO] 0.9736: S72.05
+[INFO] 0.9921: Total earnings
+[INFO] 1.0000: Mon
+[INFO] 1.0000: Tue
+[INFO] 1.0000: Wed
+[INFO] 1.0000: Thu
+[INFO] 1.0000: Fri
+[INFO] 1.0000: Sat
+[INFO] 1.0000: Sun
+[INFO] 0.9999: Delivery pay
+[INFO] 0.9797: S27.15
+[INFO] 0.9997: Tips
+[INFO] 0.6743: S44.90
+[INFO] 0.7181: GH contribution
+[INFO] 0.6177: So.0o
+[INFO] 0.8941: Updated at end of
+[INFO] 0.9982: Adjustment pay
+[INFO] 0.4734: So.oo
+[INFO] 0.9956: Mission pay
+[INFO] 0.4085: So.0o
+[INFO] 0.9998: Acceptance rate
+[INFO] 0.5325: 89%
+[INFO] 0.9962: View earnings activity
+[INFO] 0.9999: Tasks
+[INFO] 0.9858: Scheduling
+[INFO] 0.8399: Earnings
+[INFO] 0.9999: Account
+[INFO] 0.9944: day
