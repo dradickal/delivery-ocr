@@ -1,10 +1,32 @@
+.imageUpload {
+    margin-bottom: 10px;
+}
+
 .imageUpload input {
     opacity: 0;
 }
 
-.imageUpload label {
-    border: 1px solid dimgray;
-    border-radius: 3px;
-    padding: 3px 5px 3px 3px;
+.imageUpload .button, button {
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid #121212;
+    border-radius: 8px;
+    font-weight: 700;
     cursor: pointer;
+    padding: 12px 15px;
+}
+
+.imageUpload label {
+    background-color: #c8e6c9;
+}
+
+.imageUpload pre {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: #757575;
+}
+
+button[type=submit] {
+    background-color: #78c2ff;
 }

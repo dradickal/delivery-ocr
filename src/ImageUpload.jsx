@@ -1,4 +1,5 @@
 import './imageUpload.css';
+import ImagePreview from './ImagePreview';
 import {useState} from 'react';
 
 function getIntersectingFilenames(currentFiles, newFiles) {
@@ -49,23 +50,30 @@ function ImageUpload() {
         }
 
         console.log("Appended formData: ", data);
+    }
 
+    function handleRemove(event) {
+        const target = event.currentTarget;
+        const filename = target.dataset?.filename;
+        const updatedFiles = removeFilesByName(files, new Set([filename]));
+
+        setFiles(updatedFiles);        
     }
 
     return (
         <>
             <h1>Upload Delivery Actions</h1>
             <div className="imageUpload">
-                <label htmlFor="image-input">Choose Images to Upload</label>
-                <input type="file" id="image-input" multiple name="images" accept="image/*" onChange={handleFileSelection}/>
+                <label className="button" htmlFor="upload-input">Choose Images to Upload</label>
+                <input type="file" id="upload-input" multiple name="images" accept="image/*" onChange={handleFileSelection}/>
                 <br />
+                    <pre>{files.length ? '' : emptyUpload}</pre>
+                    <pre>{ignoredFiles.length ? `Selected files are already included for upload:\n ~ ${ignoredFiles.join("\n ~ ")}` : ''}</pre>
                 <div id="preview">
                     {files.map(file => 
-                        <img src={URL.createObjectURL(file)} title={file.name} alt={file.name} key={file.name} width="200"/>
+                        <ImagePreview file={file} handleRemove={handleRemove} key={file.name}/>
                     )}
                 </div> 
-                <pre>{files.length ? '' : emptyUpload}</pre>
-                <pre>{ignoredFiles.length ? `Selected files are already included for upload:\n ~ ${ignoredFiles.join("\n ~ ")}` : ''}</pre>
             </div>
             <form onSubmit={handleSubmit}>
                 <div>
