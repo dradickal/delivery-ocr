@@ -67,8 +67,10 @@ function ImageUpload() {
                 <label className="button" htmlFor="upload-input">Choose Images to Upload</label>
                 <input type="file" id="upload-input" multiple name="images" accept="image/*" onChange={handleFileSelection}/>
                 <br />
-                    <pre>{files.length ? '' : emptyUpload}</pre>
-                    <pre>{ignoredFiles.length ? `Selected files are already included for upload:\n ~ ${ignoredFiles.join("\n ~ ")}` : ''}</pre>
+                    <pre>
+                        {!files.length && emptyUpload}
+                        {!!ignoredFiles.length && `Selected files are already included for upload:\n ~ ${ignoredFiles.join("\n ~ ")}`}
+                    </pre>
                 <div id="preview">
                     {files.map(file => 
                         <ImagePreview file={file} handleRemove={handleRemove} key={file.name}/>
