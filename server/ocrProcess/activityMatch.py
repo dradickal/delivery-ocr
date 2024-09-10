@@ -119,18 +119,18 @@ def matchActivity(imageText):
     
     return label
 
-keys = activityMap.keys()
-for key in keys:
-    print('("{}"),'.format(key))
+# keys = activityMap.keys()
+# for key in keys:
+#     print('("{}"),'.format(key))
 
-# with open('earnings-page.json', 'r') as f:
-#     data = json.load(f)
+with open('../output/earnings-page.json', 'r') as f:
+    data = json.load(f)
 
-# textList = [o["text"] for o in data["output"]]
-# imageText = ','.join(textList)
+textList = [o["text"] for o in data["output"]]
+imageText = ','.join(textList)
 
-# print(imageText)
+print(imageText)
 
-# label = matchActivity(imageText)
+label = matchActivity(imageText)
 
-# print("The matched label is:", label)
+print("The matched label is:", label)

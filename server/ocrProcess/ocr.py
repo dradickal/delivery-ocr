@@ -45,7 +45,7 @@ jsonData = {
 	'filename': filename,
 }
 
-output = []
+#output = []
 for (bbox, text, prob) in results:
 	# unpack the bounding box
 	(tl, tr, br, bl) = bbox
@@ -54,19 +54,19 @@ for (bbox, text, prob) in results:
 	br = (int(br[0]), int(br[1]))
 	bl = (int(bl[0]), int(bl[1]))
 	
-	output.append(TextMatch(prob, text, [tl, tr, br, bl]))
+	#output.append(TextMatch(prob, text, [tl, tr, br, bl]))
 
 
-	# coords = "[{}]".format(', '.join(map(str, [tl, tr, br, bl])))
-    # display the OCR'd text and associated probability
-	# print("[INFO] {:.4f}: {} -- {}".format(prob, text, coords))
+	coords = "[{}]".format(', '.join(map(str, [tl, tr, br, bl])))
+    #display the OCR'd text and associated probability
+	print("[INFO] {:.4f}: {} -- {}".format(prob, text, coords))
 	
-	#cv2.rectangle(image, tl, br, (0, 255, 0), 2)
-	#cv2.putText(image, coords, (tl[0], tl[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+	cv2.rectangle(image, tl, br, (0, 255, 0), 2)
+	cv2.putText(image, text, (tl[0], tl[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
 
-jsonData['output'] = output
-print(json.dumps(jsonData, indent=2, cls=TextMatchEncoder))
+#jsonData['output'] = output
+#print(json.dumps(jsonData, indent=2, cls=TextMatchEncoder))
 
 # show the output image
-# cv2.imshow("Image", image)
-# cv2.waitKey(0)
+cv2.imshow("Image", image)
+cv2.waitKey(0)
