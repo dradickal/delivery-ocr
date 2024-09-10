@@ -9,6 +9,11 @@ export default defineConfig({
   ],
   server: {
     port: 5100,
+  }
+});
+
+// NOT CURRENTLY USING
+const proxy = {
     proxy: {
       '/api': {
         target: `${process.env.API_BASEURL}:${process.env.API_PORT}`,
@@ -16,5 +21,4 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     }
-  }
-});
+}
