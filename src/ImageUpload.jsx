@@ -50,6 +50,18 @@ function ImageUpload() {
         }
 
         console.log("Appended formData: ", data);
+        const request = new Request("http://localhost:3001/image/upload", {
+            method: "POST",
+            body: data,
+        });
+
+        fetch(request).then((response) => {
+            if(!response.ok) {
+                console.log('Form Submit - ERROR:', response.status);
+            }
+
+            console.log('Form Submit - SUCCESS:', response.body);
+        })
     }
 
     function handleRemove(event) {
@@ -80,15 +92,18 @@ function ImageUpload() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
-                        <input type='radio' name='app-service' value="GH" required defaultChecked/>
+                        <input type='radio' name='serviceId' value="1" required defaultChecked/>
                         Grubhub
                     </label>
                     <label>
-                        <input type='radio' name='app-service' value="DD" disabled/>
+                        <input type='radio' name='serviceId' value="2" disabled/>
                         DoorDash
                     </label>
                 </div>
-                
+                <label>
+                    Date of Work
+                    <input type='date' name='associatedDate'/>
+                </label>
                 <button type="submit">Upload</button>
             </form>
         </>
