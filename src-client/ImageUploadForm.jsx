@@ -1,4 +1,4 @@
-import './imageUpload.css';
+import './imageUploadForm.css';
 import ImagePreview from './ImagePreview';
 import {useState} from 'react';
 
@@ -16,9 +16,10 @@ function removeFilesByName(files, filenames) {
         : files;
 }
 
-function ImageUpload() {
+function ImageUploadForm() {
     const [files, setFiles] = useState([]);
     const [ignoredFiles, setIgnoredFiles] = useState([]);
+    const [definedTimes, setDefinedTimes] = useState ({});
     const emptyUpload = 'No files selected for upload';
 
 
@@ -49,6 +50,8 @@ function ImageUpload() {
             data.append('images', file);
         }
 
+        data.append("userDefinedTimes", JSON.stringify(definedTimes));
+
         console.log("Appended formData: ", data);
         const request = new Request("http://localhost:3001/image/upload", {
             method: "POST",
@@ -62,6 +65,13 @@ function ImageUpload() {
 
             console.log('Form Submit - SUCCESS:', response.body);
         })
+    }
+
+    function handleAddTime(filename, time) {
+        const newTimes = Object.assign({}, definedTimes);
+        newTimes[filename] = time;
+
+        setDefinedTimes(newTimes);
     }
 
     function handleRemove(event) {
@@ -85,7 +95,7 @@ function ImageUpload() {
                     </pre>
                 <div id="preview">
                     {files.map(file => 
-                        <ImagePreview file={file} handleRemove={handleRemove} key={file.name}/>
+                        <ImagePreview file={file} handleRemove={handleRemove} handleAddTime={handleAddTime} key={file.name}/>
                     )}
                 </div> 
             </div>
@@ -110,4 +120,4 @@ function ImageUpload() {
     )
 };
 
-export default ImageUpload;
+export default ImageUploadForm;

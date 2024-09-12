@@ -2,11 +2,15 @@
     margin-bottom: 10px;
 }
 
-.imageUpload input {
+.imageUpload input[type=file] {
     opacity: 0;
+    font-size: .1em;
+    margin-left: -100px;
 }
 
 .imageUpload .button, button {
+    position: relative;
+    z-index: 2;
     box-sizing: border-box;
     display: inline-block;
     border: 1px solid #121212;

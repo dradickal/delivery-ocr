@@ -1,11 +1,11 @@
 import './app.css';
-import ImageUpload from "./ImageUpload";
+import ImageUploadForm from "./ImageUploadForm";
 
 function DeliveryStatsApp() {
     return (
         <>
             <h1>Delivery Stats App</h1>
-            <ImageUpload />
+            <ImageUploadForm />
         </>
     )
 }
