@@ -7,7 +7,7 @@
     margin-right: 15px;
 }
 
-.imagePreview:hover {
+.imagePreview:hover, .imagePreview.inputTime {
     border-color: rgba(117, 117, 117, 1);
 }
 
@@ -20,7 +20,7 @@
     height: 100%;
 }
 
-.imagePreview:hover::after {
+.imagePreview:hover::after, .imagePreview.inputTime::after {
     background-color: rgba(117, 117, 117, .6);
 }
 
@@ -28,20 +28,59 @@ img {
     height: 500px;
 }
 
-button.remove {
+.previewWrapper {
     position: absolute;
     display: none;
+    width: 85%;
+    text-align: center;
+    z-index: 10;
+}
+
+.previewWrapper.buttons, .previewWrapper.timeBlock {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+}
+
+.previewWrapper.fileData {
+    bottom: 0%;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.fileData {
+   font-size: .65em; 
+}
+
+.imagePreview:hover .buttons, .imagePreview:hover .fileData {
+    display: block;
+}
+
+.imagePreview.inputTime:hover .buttons {
+    display: none;
+}
+
+.imagePreview.inputTime .timeBlock {
+    display: block;
+}
+
+button {
+    margin-top: 5px;
+}
+
+button.remove {
     background-color: #ff8383;
     color: #ffffff;
     border-color:  #ffffff;
 }
 
-.imagePreview:hover button.remove {
-    display: block;
+button.addTime {
+    display: inline-block;
+    background-color: #c8e6c9;
+}
+
+input.imageTime {
+    font-size: .8em;
 }
 
 
