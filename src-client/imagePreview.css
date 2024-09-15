@@ -42,6 +42,10 @@ img {
     transform: translate(-50%, -50%);
 }
 
+.previewWrapper.timeBlock {
+    transform: translate(-50%, -100%);
+}
+
 .previewWrapper.fileData {
     bottom: 0%;
     width: 100%;
@@ -74,8 +78,17 @@ button.remove {
     border-color:  #ffffff;
 }
 
+button.remove:hover {
+    border-color: #121212;
+    color: #121212;
+}
+
 button.addTime {
     display: inline-block;
+    background-color: #EEEDFF
+}
+
+button.addTime:hover, button.saveTime:hover {
     background-color: #c8e6c9;
 }
 

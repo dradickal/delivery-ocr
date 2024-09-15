@@ -12,8 +12,9 @@ html {
 }
 
 main {
-    padding: 0 1.2em;
+    padding: 0 1.2em 5em;
     flex-grow: 1;
+    overflow-x: scroll;
 }
 
 h1 svg {
@@ -23,6 +24,7 @@ h1 svg {
 .sidebar {
     padding: 0 1.2em;
     background-color: #625f88;
+    flex-shrink: 0;
 }
 
 .sidebar h1 {

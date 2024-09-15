@@ -49,7 +49,7 @@ function ImageUploadForm() {
             <PageHeader title="Upload Action Images" />
             <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} />
             <form onSubmit={handleSubmit} ref={formEl}>
-                <div className='serviceInput' onChange={updateService}>
+                <div className='inputGroup serviceInput' onChange={updateService}>
                     <span>Delivery Service</span><br />
                     <label className={serviceId === '1' ? 'selected' : ''} for='gh-service'>
                         {serviceId === '1' ? <FontAwesomeIcon icon={faLocationDot} /> : ''}
@@ -63,12 +63,12 @@ function ImageUploadForm() {
                     <input id='dd-service' type='radio' name='serviceId' value='2' />
                        
                 </div>
-                <br />
-                <label>
-                    Date of Work <br />
-                    <input type='date' name='associatedDate'/>
-                </label>
-                <br />
+                <div className='inputGroup'>
+                    <label>
+                        Date of Work <br />
+                        <input type='date' name='associatedDate'/>
+                    </label>
+                </div>
                 <button type="submit">Upload</button>
             </form>
         </>
