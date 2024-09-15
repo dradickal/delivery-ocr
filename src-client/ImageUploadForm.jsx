@@ -1,28 +1,34 @@
 import './imageUploadForm.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from "@fortawesome/pro-regular-svg-icons";
 import ImageUploadInput from './ImageUploadInput';
-import { useState } from 'react';
+import PageHeader from './PageHeader';
+import { useRef, useState } from 'react';
 
+function PostRequest(data, files, definedTimes) {
+    for (const file of files) {
+        data.append('images', file);
+    }
+
+    data.append('userDefinedTimes', JSON.stringify(definedTimes));
+
+    return fetch('http://localhost:3001/image/upload', {
+        method: "POST",
+        body: data,
+    })
+}
 
 function ImageUploadForm() {
     const [files, setFiles] = useState([]);
     const [definedTimes, setDefinedTimes] = useState ({});
+    const [serviceId, setServiceId] = useState();
+    const formEl = useRef();
 
     function handleSubmit(event) {
         event.preventDefault()
         const data = new FormData(event.target);
 
-        for (const file of files) {
-            data.append('images', file);
-        }
-
-        data.append("userDefinedTimes", JSON.stringify(definedTimes));
-
-        const request = new Request("http://localhost:3001/image/upload", {
-            method: "POST",
-            body: data,
-        });
-
-        fetch(request).then((response) => {
+        PostRequest(data, files, definedTimes).then((response) => {
             if(!response.ok) {
                 console.log('Form Submit - ERROR:', response.status);
             }
@@ -31,20 +37,31 @@ function ImageUploadForm() {
         })
     }
 
+    function updateService() {
+        const radioEl = formEl.current.querySelector('input[name="serviceId"]:checked');
+        if (radioEl) {
+            setServiceId(radioEl.value);
+        }
+    }
+
     return (
         <>
-            <h1>Upload Delivery Actions</h1>
+            <PageHeader title="Upload Action Images" />
             <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} />
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                        <input type='radio' name='serviceId' value="1" required defaultChecked />
+            <form onSubmit={handleSubmit} ref={formEl}>
+                <div className='serviceInput' onChange={updateService}>
+                    <span>Delivery Service</span><br />
+                    <label className={serviceId === '1' ? 'selected' : ''} for='gh-service'>
+                        {serviceId === '1' ? <FontAwesomeIcon icon={faLocationDot} /> : ''}
                         Grubhub
                     </label>
-                    <label>
-                        <input type='radio' name='serviceId' value="2" disabled />
+                    <label className={serviceId === '2' ? 'selected' : ''} for='dd-service'>
+                        {serviceId === '2' ? <FontAwesomeIcon icon={faLocationDot} /> : ''}
                         DoorDash
                     </label>
+                    <input id='gh-service' type='radio' name='serviceId' value='1' required />
+                    <input id='dd-service' type='radio' name='serviceId' value='2' />
+                       
                 </div>
                 <br />
                 <label>

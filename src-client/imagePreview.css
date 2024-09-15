@@ -60,7 +60,7 @@ img {
     display: none;
 }
 
-.imagePreview.inputTime .timeBlock {
+.imagePreview.inputTime .timeBlock, .imagePreview.inputTime .fileData {
     display: block;
 }
 

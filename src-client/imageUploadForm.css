@@ -4,7 +4,7 @@
 
 .imageUploadInput input[type=file] {
     opacity: 0;
-    font-size: .1em;
+    font-size: 0.1em;
     margin-left: -100px;
 }
 
@@ -21,7 +21,11 @@
 }
 
 .imageUploadInput label {
-    background-color: #c8e6c9;
+    background-color: #EEEDFF;
+}
+
+.imageUploadInput label:hover {
+    background-color: #C8E6C9;
 }
 
 .imageUploadInput pre {
@@ -31,6 +35,58 @@
     color: #757575;
 }
 
+.serviceInput label {
+    display: inline-block;
+    margin-top: 3px;
+    padding: 0.3em 0.4em 0.2em;
+    line-height: 1.4em;
+    border: 1px solid #121212;
+    background-color: #EEEDFF;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.serviceInput label:hover {
+    background-color: #C8E6C9;
+}
+
+.serviceInput label:not(:last-of-type) {
+    border-right: none;
+}
+
+.serviceInput label:first-of-type {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.serviceInput label:last-of-type {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.serviceInput label.selected {
+    background-color: #C8E6C9;
+}
+
+.serviceInput label svg {
+    padding-right: .2em;
+}
+
+.serviceInput input[type=radio] {
+    opacity: 0;
+    margin-left: -100px;
+}
+
+input[type=date] {
+    font-size: 0.8em;
+}
+
 button[type=submit] {
-    background-color: #78c2ff;
+    background-color: #AEDDFF;
+    margin-top: 1.2em;
+}
+
+button[type=submit]:hover {
+    background-color: #C8E6C9;
 }

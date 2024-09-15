@@ -1,12 +1,12 @@
 import './app.css';
-import ImageUploadForm from "./ImageUploadForm";
+import { Outlet } from 'react-router-dom';
+import PrimaryPage from './layouts/PrimaryLayout';
 
 function DeliveryStatsApp() {
     return (
-        <>
-            <h1>Delivery Stats App</h1>
-            <ImageUploadForm />
-        </>
+        <PrimaryPage>
+            <Outlet />
+        </PrimaryPage>
     )
 }
 
