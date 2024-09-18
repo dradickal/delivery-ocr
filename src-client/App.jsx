@@ -1,4 +1,4 @@
-import './app.css';
+import './app.scss';
 import { Outlet } from 'react-router-dom';
 import PrimaryPage from './layouts/PrimaryLayout';
 

@@ -1,0 +1,56 @@
+html {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #121212;
+    background-color: #fff5ee;
+}
+
+#root {
+    margin: 0;
+    display: flex;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+main {
+    padding: 0 1.2em 5em;
+    flex-grow: 1;
+    overflow-x: scroll;
+}
+
+h1 svg {
+    padding-right: 0.4em;
+}
+
+.sidebar {
+    padding: 0 1.2em;
+    background-color: #625f88;
+    flex-shrink: 0;
+    
+    h1 {
+        color: #EEEDFF;
+    }
+    
+    nav {
+        display: grid;
+        grid-gap: .3em;
+
+        a {
+            display: block;
+            width: 90%;
+            padding: 0.35em .2em .2em 0.7em;
+            text-decoration: none;
+            font-weight: bold;
+            color: #EEEDFF;
+            border-radius: 6px;
+        
+            &:hover, 
+            &.active {
+                background-color: #EEEDFF;
+                color: #121212;
+            }
+        }
+
+    }
+}
+
+
