@@ -22,18 +22,20 @@ function ImageUploadForm() {
     const [files, setFiles] = useState([]);
     const [definedTimes, setDefinedTimes] = useState ({});
     const [serviceId, setServiceId] = useState();
+    const [submitError, setSubmitError] = useState({})
     const formEl = useRef();
 
     function handleSubmit(event) {
         event.preventDefault()
         const data = new FormData(event.target);
 
-        PostRequest(data, files, definedTimes).then((response) => {
+        PostRequest(data, files, definedTimes).then(async (response) => {
             if(!response.ok) {
                 console.log('Form Submit - ERROR:', response.status);
+                setSubmitError(await response.json());
+            } else {
+                console.log('Form Submit - SUCCESS:', response.body);
             }
-
-            console.log('Form Submit - SUCCESS:', response.body);
         })
     }
 
@@ -47,7 +49,7 @@ function ImageUploadForm() {
     return (
         <>
             <PageHeader title="Upload Action Images" />
-            <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} />
+            <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} submitError={submitError} />
             <form onSubmit={handleSubmit} ref={formEl}>
                 <div className='inputGroup serviceInput' onChange={updateService}>
                     <span>Delivery Service</span><br />

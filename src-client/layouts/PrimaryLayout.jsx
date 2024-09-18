@@ -19,7 +19,7 @@ function PrimaryLayout({children}) {
                 <h1><FontAwesomeIcon icon={faMapLocationDot}/>Delivery Stats</h1>
                 <nav>
                     <NavLink to='dashboard' className={linkStateClass}>Dashboard</NavLink>
-                    <NavLink to='process-data' className={linkStateClass}>Process Data</NavLink>
+                    <NavLink to='manage-data' className={linkStateClass}>Manage Data</NavLink>
                     <NavLink to='upload' className={linkStateClass}>Image Upload</NavLink>
                 </nav>
             </section>

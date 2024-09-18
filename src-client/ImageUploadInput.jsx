@@ -15,7 +15,7 @@ function removeFilesByName(files, filenames) {
         : files;
 }
 
-function ImageUploadInput({files, definedTimes, setFiles, setDefinedTimes}) {
+function ImageUploadInput({files, definedTimes, setFiles, setDefinedTimes, submitError}) {
     const [ignoredFiles, setIgnoredFiles] = useState([]);
     const emptyUpload = 'No files selected for upload';
 
@@ -57,10 +57,11 @@ function ImageUploadInput({files, definedTimes, setFiles, setDefinedTimes}) {
                 <pre>
                     {!files.length && emptyUpload}
                     {!!ignoredFiles.length && `Selected files are already included for upload:\n ~ ${ignoredFiles.join("\n ~ ")}`}
+                    {!!submitError.hasOwnProperty('message') && submitError.message }
                 </pre>
             <div id="preview">
                 {files.map(file => 
-                    <ImagePreview file={file} handleRemove={handleRemove} handleAddTime={handleAddTime} key={file.name}/>
+                    <ImagePreview file={file} isDuplicate={file.name === submitError.data.fileName} handleRemove={handleRemove} handleAddTime={handleAddTime} key={file.name}/>
                 )}
             </div> 
         </div>

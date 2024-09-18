@@ -5,11 +5,12 @@ IMAGE UPLOAD
 X - make service and date inputs inline
 X - match button UX in image preview to others on page
 X - fix setTime alignment with remove button
+- Make main scrollable with sidebar sticky
 - extract RadioGroupLabel into separate component
 - batch image upload requests
 
 IMAGE API
-- save original filename in db with upload
-- index for date and filename
+X - save original filename in db with upload
+X - index for date and filename
 - use date index to group proccessed state counts
 - processsing images will be fetched by date grouping too.

@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: '/process-data',
+        path: '/manage-data',
         element: <ImageDataForm />
       },
       {

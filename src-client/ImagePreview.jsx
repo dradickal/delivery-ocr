@@ -1,7 +1,7 @@
 import './imagePreview.css';
 import {useState, useRef} from 'react';
 
-function ImagePreview({file, handleRemove, handleAddTime}) {
+function ImagePreview({file, isDuplicate, handleRemove, handleAddTime}) {
     const [time, setTime] = useState();
     const [showTimeInput, setShowTimeInput] = useState(false);
     const inputRef = useRef(null);
@@ -17,8 +17,16 @@ function ImagePreview({file, handleRemove, handleAddTime}) {
         handleAddTime(filename, `${inputTime}:00`);
     }
 
+    function imagePreviewClasses() {
+        let str = showTimeInput ? 'imagePreview inputTime' : 'imagePreview';
+        if (isDuplicate) {
+            str = str + ' duplicateErr';
+        }
+        return str;
+    }
+
     return (
-        <span className={showTimeInput ? 'imagePreview inputTime' : 'imagePreview'}>
+        <span className={imagePreviewClasses()}>
             <img src={URL.createObjectURL(file)} title={file.name} alt={file.name} />
             
             <div className='previewWrapper fileData'>
