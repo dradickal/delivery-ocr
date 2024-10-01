@@ -8,7 +8,7 @@ import {
 import DeliveryStatsApp from './App';
 import Dashboard from './Dashboard';
 import ImageUploadForm from './ImageUploadForm';
-import ImageDataForm from './ImageDataForm';
+import ManageData from './ManageData';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/manage-data',
-        element: <ImageDataForm />
+        element: <ManageData />
       },
       {
         path: '/upload',

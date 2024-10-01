@@ -42,8 +42,14 @@ function ImageUploadForm() {
             } else {
                 console.log('Form Submit - SUCCESS:', response.body);
                 setApiError(emptyError);
+                clearForm();
             }
         })
+    }
+
+    function clearForm() {
+        setFiles([]);
+        formEl.current.reset();
     }
 
     function updateService() {
