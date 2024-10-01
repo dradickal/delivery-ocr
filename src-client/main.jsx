@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import DeliveryStatsApp from './App';
 import Dashboard from './Dashboard';
-import ImageUploadForm from './ImageUploadForm';
+import Upload from './Upload';
 import ManageData from './ManageData';
 
 const router = createBrowserRouter([
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/upload',
-        element: <ImageUploadForm />,
+        element: <Upload />,
       },
     ],
   },

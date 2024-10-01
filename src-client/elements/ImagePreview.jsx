@@ -1,6 +1,6 @@
 import './imagePreview.css';
 import {useState, useRef, useContext} from 'react';
-import { ErrorContext } from './utils/ErrorContext';
+import { ErrorContext } from '../utils/ErrorContext';
 
 function ImagePreview({file, isDuplicate, handleRemove, handleAddTime}) {
     const [time, setTime] = useState();

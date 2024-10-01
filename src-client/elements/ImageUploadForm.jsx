@@ -2,8 +2,7 @@ import './imageUploadForm.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/pro-regular-svg-icons";
 import ImageUploadInput from './ImageUploadInput';
-import PageHeader from './PageHeader';
-import { ErrorContext, emptyError } from './utils/ErrorContext';
+import { ErrorContext, emptyError } from '../utils/ErrorContext';
 import { useRef, useState, useMemo } from 'react';
 
 function PostRequest(data, files, definedTimes) {
@@ -61,7 +60,6 @@ function ImageUploadForm() {
 
     return (
         <ErrorContext.Provider value={apiError}>
-            <PageHeader title="Upload Action Images" />
             <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} />
             <form onSubmit={handleSubmit} ref={formEl}>
                 <div className='inputGroup serviceInput' onChange={updateService}>
