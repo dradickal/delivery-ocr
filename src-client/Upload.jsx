@@ -1,4 +1,4 @@
-import PageHeader from "./PageHeader";
+import PageHeader from "./layouts/PageHeader";
 import ImageUploadForm from "./elements/ImageUploadForm";
 
 function Upload() {
