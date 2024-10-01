@@ -1,7 +1,10 @@
-import PageHeader from "../PageHeader";
 
 function ImageDataForm() {
-    return (<PageHeader title="Process Data" />)
+    return (
+        <div>
+            <p>Create OCR Data Processing Flow</p>
+        </div>
+    );
 }
 
 export default ImageDataForm;
