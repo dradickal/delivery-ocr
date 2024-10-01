@@ -9,6 +9,7 @@ import DeliveryStatsApp from './App';
 import Dashboard from './Dashboard';
 import Upload from './Upload';
 import ManageData from './ManageData';
+import { getActivityDates } from './utils/getActivityDates';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/manage-data',
-        element: <ManageData />
+        element: <ManageData />,
+        loader: getActivityDates,
       },
       {
         path: '/upload',
