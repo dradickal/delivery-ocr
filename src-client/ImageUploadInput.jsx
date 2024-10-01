@@ -1,6 +1,6 @@
 import ImagePreview from './ImagePreview';
 import {useContext, useState} from 'react';
-import { ErrorContext } from './ErrorContext';
+import { ErrorContext } from './utils/ErrorContext';
 
 function getIntersectingFilenames(currentFiles, newFiles) {
     const currentFilenames = new Set(currentFiles.map((file) => file.name));

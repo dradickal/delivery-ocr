@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/pro-regular-svg-icons";
 import ImageUploadInput from './ImageUploadInput';
 import PageHeader from './PageHeader';
-import { ErrorContext, emptyError } from './ErrorContext';
+import { ErrorContext, emptyError } from './utils/ErrorContext';
 import { useRef, useState, useMemo } from 'react';
 
 function PostRequest(data, files, definedTimes) {
