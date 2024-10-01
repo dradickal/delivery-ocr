@@ -20,6 +20,10 @@
     height: 100%;
 }
 
+.imagePreview.duplicateErr {
+    border-color: rgba(255, 131, 131, 1);
+}
+
 .imagePreview:hover::after, .imagePreview.inputTime::after {
     background-color: rgba(117, 117, 117, .6);
 }

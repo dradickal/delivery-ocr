@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/pro-regular-svg-icons";
 import ImageUploadInput from './ImageUploadInput';
 import PageHeader from './PageHeader';
-import { useRef, useState } from 'react';
+import { ErrorContext, emptyError } from './ErrorContext';
+import { useRef, useState, useMemo } from 'react';
 
 function PostRequest(data, files, definedTimes) {
     for (const file of files) {
@@ -12,7 +13,7 @@ function PostRequest(data, files, definedTimes) {
 
     data.append('userDefinedTimes', JSON.stringify(definedTimes));
 
-    return fetch('http://localhost:3001/image/upload', {
+    return fetch('http://localhost:3001/activity/upload', {
         method: "POST",
         body: data,
     })
@@ -22,8 +23,13 @@ function ImageUploadForm() {
     const [files, setFiles] = useState([]);
     const [definedTimes, setDefinedTimes] = useState ({});
     const [serviceId, setServiceId] = useState();
-    const [submitError, setSubmitError] = useState({})
+    const [apiError, setApiError] = useState({})
     const formEl = useRef();
+
+    const submitError = useMemo(() => ({
+        message: apiError?.message,
+        data:  apiError?.data,
+    }), [apiError]);
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -32,9 +38,10 @@ function ImageUploadForm() {
         PostRequest(data, files, definedTimes).then(async (response) => {
             if(!response.ok) {
                 console.log('Form Submit - ERROR:', response.status);
-                setSubmitError(await response.json());
+                setApiError(await response.json());
             } else {
                 console.log('Form Submit - SUCCESS:', response.body);
+                setApiError(emptyError);
             }
         })
     }
@@ -47,17 +54,17 @@ function ImageUploadForm() {
     }
 
     return (
-        <>
+        <ErrorContext.Provider value={apiError}>
             <PageHeader title="Upload Action Images" />
-            <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} submitError={submitError} />
+            <ImageUploadInput files={files} definedTimes={definedTimes} setFiles={setFiles} setDefinedTimes={setDefinedTimes} />
             <form onSubmit={handleSubmit} ref={formEl}>
                 <div className='inputGroup serviceInput' onChange={updateService}>
                     <span>Delivery Service</span><br />
-                    <label className={serviceId === '1' ? 'selected' : ''} for='gh-service'>
+                    <label className={serviceId === '1' ? 'selected' : ''} htmlFor='gh-service'>
                         {serviceId === '1' ? <FontAwesomeIcon icon={faLocationDot} /> : ''}
                         Grubhub
                     </label>
-                    <label className={serviceId === '2' ? 'selected' : ''} for='dd-service'>
+                    <label className={serviceId === '2' ? 'selected' : ''} htmlFor='dd-service'>
                         {serviceId === '2' ? <FontAwesomeIcon icon={faLocationDot} /> : ''}
                         DoorDash
                     </label>
@@ -73,7 +80,7 @@ function ImageUploadForm() {
                 </div>
                 <button type="submit">Upload</button>
             </form>
-        </>
+        </ErrorContext.Provider>
     )
 };
 

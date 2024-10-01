@@ -1,10 +1,12 @@
 import './imagePreview.css';
-import {useState, useRef} from 'react';
+import {useState, useRef, useContext} from 'react';
+import { ErrorContext } from './ErrorContext';
 
 function ImagePreview({file, isDuplicate, handleRemove, handleAddTime}) {
     const [time, setTime] = useState();
     const [showTimeInput, setShowTimeInput] = useState(false);
     const inputRef = useRef(null);
+    const submitError = useContext(ErrorContext)
 
     function saveTime(event) {
         const target = event.currentTarget;
@@ -19,7 +21,7 @@ function ImagePreview({file, isDuplicate, handleRemove, handleAddTime}) {
 
     function imagePreviewClasses() {
         let str = showTimeInput ? 'imagePreview inputTime' : 'imagePreview';
-        if (isDuplicate) {
+        if (file.name === submitError.data?.fileName) {
             str = str + ' duplicateErr';
         }
         return str;

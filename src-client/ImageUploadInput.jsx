@@ -1,5 +1,6 @@
 import ImagePreview from './ImagePreview';
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import { ErrorContext } from './ErrorContext';
 
 function getIntersectingFilenames(currentFiles, newFiles) {
     const currentFilenames = new Set(currentFiles.map((file) => file.name));
@@ -15,9 +16,10 @@ function removeFilesByName(files, filenames) {
         : files;
 }
 
-function ImageUploadInput({files, definedTimes, setFiles, setDefinedTimes, submitError}) {
+function ImageUploadInput({files, definedTimes, setFiles, setDefinedTimes}) {
     const [ignoredFiles, setIgnoredFiles] = useState([]);
     const emptyUpload = 'No files selected for upload';
+    const submitError = useContext(ErrorContext);
 
     function handleFileSelection(filesEvent) {
         console.log("file change triggered");
@@ -61,7 +63,11 @@ function ImageUploadInput({files, definedTimes, setFiles, setDefinedTimes, submi
                 </pre>
             <div id="preview">
                 {files.map(file => 
-                    <ImagePreview file={file} isDuplicate={file.name === submitError.data.fileName} handleRemove={handleRemove} handleAddTime={handleAddTime} key={file.name}/>
+                    <ImagePreview 
+                        file={file} 
+                        handleRemove={handleRemove} 
+                        handleAddTime={handleAddTime} 
+                        key={file.name} />
                 )}
             </div> 
         </div>
