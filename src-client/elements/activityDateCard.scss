@@ -2,12 +2,15 @@
     border: 1px solid;
     border-radius: 8px;
     margin-inline-end: 1em;
+    background-color: white;
     
     header {
         position: relative;
         padding: 0.2em 0;
         border-bottom: 1px solid;
         text-align: center;
+        background-color: #EEEDFF;
+        border-radius: 7px 7px 0 0;
 
         .service {
             position: absolute;
