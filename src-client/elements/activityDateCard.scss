@@ -1,0 +1,65 @@
+.activityDateCard {
+    border: 1px solid;
+    border-radius: 8px;
+    margin-inline-end: 1em;
+    
+    header {
+        position: relative;
+        padding: 0.2em 0;
+        border-bottom: 1px solid;
+        text-align: center;
+
+        .service {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 0.4em 0.3em;
+            border-right: 1px solid;
+            border-radius: 7px 0 0 0;
+            font-size: 0.8em;
+        }
+
+        .day {
+            font-weight: bold;
+        }
+    }
+
+    section {
+        padding: .3em 1.6em;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .date {
+        display: flex;
+        margin: 0.5em 0;
+        padding: 0;
+        flex-flow: column;
+        text-align: center;
+        list-style-type: none;
+
+        .d {
+            font-weight: bold;
+            font-size: 2.7em;
+            line-height: 1em;
+        }  
+        .y {
+            margin-top: -0.3em;
+        }
+        .m {
+            font-size: 1.2em;
+          }
+    }
+}
+
+.service {
+    &.GH {
+        background-color: lightsalmon;
+    }
+    &.DD {
+        background-color: lightcoral;
+    }
+}
+
