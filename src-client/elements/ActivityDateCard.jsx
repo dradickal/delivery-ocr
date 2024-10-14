@@ -1,4 +1,5 @@
 import "./activityDateCard.scss";
+import { useState } from "react";
 
 const DAYOFWEEK = new Map([
     [0, {short: "Sun", long: "Sunday"}],
@@ -42,24 +43,26 @@ function getService() {
 
 function ActivityDateCard({ activity }) {
     const { date, serviceId, processed, waiting } = activity;
+    const { isProcessed, setIsProcessed } = useState((!!waiting));
     const fDate = parseDate(date);
     const fService = getService(serviceId);
 
+    const processBtn = (<button className="processBtn" onClick="">Process Text</button>)
+    const dataEntryBtn = (<button className="dataEntryBtn" clonClick="">Confirm Data</button>)
 
     return (
         <li className="activityDateCard" data-service={fService.short}>
             <header>
-                <span className={"service " + fService.short}>{fService.short}</span>
                 <span className="day">{fDate.day.long}</span>
             </header>
             <section>
+                <span className={"service " + fService.short}>{fService.short}</span>
                 <ul className="date">
                     <li className="m">{fDate.month.short}</li>
                     <li className="d">{fDate.date}</li>
                     <li className="y">{fDate.year}</li>
                 </ul>
-                <p>Processed: {activity.processed}</p>
-                <p>Waiting: {activity.waiting}</p>
+                {isProcessed ? dataEntryBtn : processBtn}
             </section>
         </li>
     );

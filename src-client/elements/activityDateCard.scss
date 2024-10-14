@@ -5,22 +5,12 @@
     background-color: white;
     
     header {
-        position: relative;
-        padding: 0.2em 0;
+        padding: 0.3em 0;
         border-bottom: 1px solid;
         text-align: center;
+        font-size: 1.1em;
         background-color: #EEEDFF;
         border-radius: 7px 7px 0 0;
-
-        .service {
-            position: absolute;
-            left: 0;
-            top: 0;
-            padding: 0.4em 0.3em;
-            border-right: 1px solid;
-            border-radius: 7px 0 0 0;
-            font-size: 0.8em;
-        }
 
         .day {
             font-weight: bold;
@@ -28,7 +18,18 @@
     }
 
     section {
+        position: relative;
         padding: .3em 1.6em;
+
+        .service {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 0.4em 0.3em;
+            border-right: 1px solid;
+            border-bottom: 1px solid;
+            font-size: 0.8em;
+        }
     }
 
     p {
@@ -54,6 +55,25 @@
         .m {
             font-size: 1.2em;
           }
+    }
+
+    button {
+        margin-bottom: .8em;
+    }
+
+    .processBtn {
+        padding-left: 17px;
+        padding-right: 17px;
+
+        &:hover {
+            background-color: #C8E6C9;
+        }
+    }
+    
+    .dataEntryBtn {
+        &:hover {
+            background-color: #AEDDFF;
+        }
     }
 }
 
