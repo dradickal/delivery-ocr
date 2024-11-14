@@ -4,4 +4,8 @@
 node_modules
 notes
 
+requirements.txt
+src-server
+config
+
 .DS_Store
